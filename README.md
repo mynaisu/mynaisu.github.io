@@ -1,2 +1,0 @@
-# mynaisu.github.io
--
