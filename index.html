@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- Muhtar Hartopo
+	13513068
+-->
+<html>
+<head>
+<h1>
+Cholesky Decomposition
+</h1>
+<i>Muhtar Hartopo - 13513068</i> <br><br>
+<body>
+
+<p>
+Dalam menyelesaikan persamaanlinear Ax = b dengan A adalah matriks m x m
+akan memakan waktu yang sangat lama. Dan dalam menyelesaikan persamaan tersebut
+kadang kala kita tidak teliti dan dan akhirnya mengalami kesalahan.
+</p>
+
+<p>
+Dibeberapa kasus kita akan menemukan sebuah matriks
+A &isin; R <sup>m x m</sup> yang sifatnya singular definit positif. Singular definit positif 
+jika matriks bersifat singular maksudnya nilai matriks A sama dengan matriks hasil transposnya atau A = A<sup>T</sup>.
+Kemudian matriks A bersifat definit positif jika untuk setiap vektor tidak nol
+x &isin; R<sup>m</sup> maka x<sup>T</sup> A x > 0 .
+</p>
+
+<p>
+Jika matriks memenuhi syarat tersersebut diatas maka matriks dapat di dekomposisi menjadi matriks segitiga.
+<br>
+Diberikan matriks singular definit positif A maka terdapat matriks segitiga bawah L , sehingga
+<br><br>
+A = L L<sup>T</sup> <br><br>
+Matriks L disebut juga sebagai Cholesky Factor dari matriks A Lalu, dengan persamaan diatas kita bisa
+melakukan penyelesaian persamaan Ax = b sebagai berikut <br> <br>
+L L<sup>T</sup> = b <br>
+kemudian kita berikan z = L<sup>T</sup>, sehingga <br>
+L z = b
+</p>
+<p>
+Nilai vektor z dapat dihitung dengan menyelesaikan persamaan L z  = b dan setelah itu x dapat dihitung 
+dengan menyelesaikan persamaan L<sup>T</sup> x = z. Hal ini akan lebih mudah dilakukan sebab L adalah 
+matriks segitiga bawah sehingga kita dapat menerapakan metode forward substitution untuk menyelesaikan persamaan tersebut. 
+Begitupun dengan L<sup>T</sup> x  = z, karena L<sup>T</sup> adalah matriks segitiga atas, 
+sehingga kita bisa menerapkan metode backward substitution untuk menyelesaikannya.
+</p>
+
+<p>
+Nah, masalahnya adalah bagaimana cara menghitung matriks L nya. Untuk menghitung
+matriks L nya kita dapat menerapkan cara berikut
+<br><br>
+Pertama partisikan matriks A menjadi <br><br>
+<img src = "eq/eq1.png" alt = "pers1">     
+<img src = "eq/eq2.png" alt = "pers2">
+</p>
+<p>
+Kemudian kita dapat menghitung l<sub>11</sub> dan L<sub>12</sub> dengan cara <br>
+<img src = "eq/eq3.png" alt = "pers3"> <br> &nbsp;  &nbsp;  &nbsp; dan <br> <img src = "eq/eq4.png" alt = "pers4">
+</p>
+<p>
+<p>
+Lalu untuk menghitung L<sub>22</sub> <br>
+<img src = "eq/eq5.png" alt = "pers5"> <br>
+<img src = "eq/eq6.png" alt = "pers6">
+</p>
+Berikut ini <i>pseudo code</i> untuk menghitung faktor cholesky : <br>
+<pre>
+<b>for</b> j = 1 <b>to</b> n
+	&alpha;<sub>i,j</sub> := sqrt(&alpha;<sub>i,j</sub>)
+	<b>for</b> i = j+i <b>to</b> n
+		&alpha;<sub>i,j</sub> = &alpha;<sub>i,j</sub>/&alpha;<sub>j,j</sub>
+	<b>endfor</b>
+	
+	<b>for</b> k = j + 1 <b>to</b> n
+		<b>for</b> i = k <b>to</b> n
+			&alpha;<sub>i,k</sub> = &alpha;<sub>i,j</sub> - &alpha;<sub>i,k</sub>*&alpha;<sub>k,j</sub>
+		<b>endfor</b>
+	<b>endfor</b>
+<b>endfor</b>
+</pre>
+<br>
+<div> <br>
+Referensi : <br>
+<a href = http://www.seas.ucla.edu/~vandenbe/103/lectures/chol.pdf > http://www.seas.ucla.edu/~vandenbe/103/lectures/chol.pdf</a>
+<br> Diakses pada 25 Mei 2015 pukul 10.13 WITA. <br>
+<a href = https://math.berkeley.edu/~strain/128b.S15/van.de.geijn.cholesky.notes.pdf> https://math.berkeley.edu/~strain/128b.S15/van.de.geijn.cholesky.notes.pdf </a>
+<br> Diakses pada 29 Mei 2015 pukul 15.30 WITA. <br>
+<a href = http://www.math.sjsu.edu/~foster/m143m/cholesky.pdf> http://www.math.sjsu.edu/~foster/m143m/cholesky.pdf </a> 
+<br> Diakses pada 1 Juni 2015 pukul 19.32 WITA. <br> <br>
+</div>
+</body>
+</head>
+</html>
